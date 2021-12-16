@@ -1,14 +1,14 @@
 const express = require("express");
-const { createTOdo } = require("../controller/todocontrollers");
-const {getAllTodo , getAllTodoById, createTOdo, deleteTodo, updateTodo}  = require("../controllers/todocontrollers");
+const { createTodo } = require("../controller/todocontrollers");
+const {getAllTodo , getAllTodoById, createTodo, deleteTodo, updateTodo}  = require("../controllers/todocontrollers");
 
 //define router features from export
-const router = express.Router();
+const routers = express.routers();
 
-router.get("/getAllTodos", getAllTodos);
-router.get("/getAllTodoById/:id", getAllTodoById);
-router.post("/createTodo", createTOdo);
-router.delete("/deleteTodo/:id", deleteTodo);
-router.put("/udateTodo/:id",udateTodo);
+routers.get("/getAllTodos", getAllTodo);
+routers.get("/getAllTodoById/:id", getAllTodoById);
+routers.post("/createTodo", createTodo);
+routers.delete("/deleteTodo/:id", deleteTodo);
+routers.put("/udateTodo/:id",udateTodo);
 
-module.exports = router
+module.exports = routers

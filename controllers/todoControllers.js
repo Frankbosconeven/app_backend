@@ -1,13 +1,13 @@
-const { response } = require("express");
+const {response} = require("express");
 const {Todo} = require("../models/todo");
 
 //create a get all todo controller
-const getAllTodos = (req,res) =>{
+const getAllTodo = (req,res) =>{
     Todo.find()
     .then((response) => {
-        res.send("response");
+        res.staua(200).send("response");
     }).catch((err) => {
-        res.send("an error occure");
+        res.status(500).send("an error occure");
     });
     res.send("Get all todo");
 
@@ -19,20 +19,20 @@ const getTodoById =(req,res) => {
 
     Todo.find(id)
     .then(response => {
-    res.send(response);
+    res.staua(200).send(response);
     }) 
     .catch((err) => {
-        res.sen("an error occured")
+        res.staua(200).send("an error occured")
     });
 };
 
-const createTOdo = (req,res)=>{
+const createTodo = (req,res)=>{
     const todo = new Todo(req.body);
 
     todo.save() .then(response => {
-        res.send(response)
+        res.staua(201).send(response)
     }) .catch(err =>{
-        res.send("an error occured");
+        res.staua(500).send("an error occured");
     })
 }
 
@@ -42,14 +42,14 @@ const deleteTodo = (req,res) => {
 
     Todo.findByIdAndDelete({_id: id}, req.body)
     .then(response => {
-        res.send("Todo with specified ID delete");
+        res.staua(200).send("Todo with specified ID delete");
     })
     .catch(err =>{
-        res.send(" an error occured");
+        res.staua(500).send(" an error occured");
     })
 }
 
-const updatetodo = (req,res) => {
+const updateTodo = (req,res) => {
     const id = req.params.id;
 
     todo.updateTodoById(id) .then(response => {
